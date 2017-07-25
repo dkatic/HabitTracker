@@ -102,7 +102,9 @@
         android:layout_below="@+id/durationText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/margin_top"
-        android:text="@string/insert_habit" />
+        android:backgroundTint="@color/colorPrimary"
+        android:text="@string/insert_habit"
+        android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/refreshButton"
@@ -110,14 +112,17 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/insertButton"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/margin_top"
-        android:text="@string/refresh_data" />
+        android:backgroundTint="@color/colorPrimary"
+        android:text="@string/refresh_data"
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:id="@+id/habitsList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/refreshButton"
-        android:layout_marginTop="@dimen/margin_top" />
+        android:layout_marginTop="@dimen/margin_top"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+        android:typeface="monospace" />
 
 </RelativeLayout>

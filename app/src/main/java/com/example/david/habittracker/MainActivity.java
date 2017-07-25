@@ -99,16 +99,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void insertNewHabit() {
-        Habit habit = new Habit(
-                nameEdit.getText().toString(),
-                descriptionEdit.getText().toString(),
-                date.getTimeInMillis(),
-                Long.parseLong(durationEdit.getText().toString())
-        );
         DatabaseHelper db = new DatabaseHelper(MainActivity.this);
         try {
+            Habit habit = new Habit(
+                    nameEdit.getText().toString(),
+                    descriptionEdit.getText().toString(),
+                    date.getTimeInMillis(),
+                    Long.parseLong(durationEdit.getText().toString())
+            );
+
             if (db.insertHabit(habit)) {
                 Toast.makeText(this, R.string.insert_successful, Toast.LENGTH_SHORT).show();
+                nameEdit.setText("");
+                descriptionEdit.setText("");
+                dateEdit.setText("");
+                durationEdit.setText("");
             } else {
                 Toast.makeText(this, R.string.insert_failed, Toast.LENGTH_SHORT).show();
             }
@@ -116,10 +121,6 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, R.string.insert_failed, Toast.LENGTH_SHORT).show();
         } finally {
             db.close();
-            nameEdit.setText("");
-            descriptionEdit.setText("");
-            dateEdit.setText("");
-            durationEdit.setText("");
         }
     }
 
@@ -134,5 +135,4 @@ public class MainActivity extends AppCompatActivity {
             dateEdit.setText(sdf.format(date.getTimeInMillis()));
         }
     };
-
 }
