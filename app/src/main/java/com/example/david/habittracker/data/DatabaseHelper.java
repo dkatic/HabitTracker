@@ -51,9 +51,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return db.insert(HabitEntry.TABLE_NAME, null, contentValues) != -1;
     }
 
-    public List<Habit> readAllHabits() {
-        List<Habit> habits = new ArrayList<>();
-
+    public Cursor getHabitsCursor(){
         SQLiteDatabase db = getReadableDatabase();
 
         String[] projection = {
@@ -71,6 +69,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 null,
                 null,
                 null);
+
+        return cursor;
+    }
+
+    public List<Habit> readAllHabits() {
+        List<Habit> habits = new ArrayList<>();
+
+        Cursor cursor = getHabitsCursor();
 
         int idColumnIndex = cursor.getColumnIndex(HabitEntry._ID);
         int nameColumnIndex = cursor.getColumnIndex(HabitEntry.COLUMN_NAME);

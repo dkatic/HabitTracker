@@ -3,6 +3,7 @@ package com.example.david.habittracker;
 import android.app.DatePickerDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -80,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             habits = db.readAllHabits();
         } catch (Exception e) {
+            Log.d("exception", e.toString());
         } finally {
             db.close();
         }
